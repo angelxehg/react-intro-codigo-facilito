@@ -1,45 +1,38 @@
 import React, { Component } from 'react';
 import './style.css';
 
-function A(props) {
-  return (
-    <div>
-      <h1>Hola {props.name}</h1>
-      {props.children}
-    </div>
-  );
-}
+class Contador extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      contador: 0
+    };
+  }
 
-function B(props) {
-  return <p>{props.name}: 10</p>;
-}
+  aumentar() {
+    const { contador } = this.state;
+    this.setState({ contador: contador + 1 });
+  }
 
-function Componente() {
-  return <p>Componente funcional</p>;
-}
-
-class ComponenteClase extends Component {
   render() {
-    return <p>Componente de clase</p>;
+    const { contador } = this.state;
+    return (
+      <div>
+        <p>Cuenta: {contador}</p>
+        <button onClick={() => this.aumentar()}>Aumentar</button>
+      </div>
+    );
   }
 }
 
 export default class App extends Component {
   constructor() {
     super();
-    this.state = {
-      nombre: 'Angel'
-    };
   }
   render() {
-    const nombre = 'Angel';
     return (
       <div>
-        <A name={nombre}>
-          <B name={nombre} />
-        </A>
-        <Componente />
-        <ComponenteClase />
+        <Contador />
       </div>
     );
   }
