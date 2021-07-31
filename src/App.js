@@ -1,6 +1,32 @@
 import React, { Component } from 'react';
 import './style.css';
 
+class Blog extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      articulos: [
+        { title: 'Articulo 1' },
+        { title: 'Articulo 2' },
+        { title: 'Articulo 3' }
+      ]
+    };
+  }
+  render() {
+    const { articulos } = this.state;
+    return (
+      <section>
+        <h1>Artículos</h1>
+        {articulos.map(articulo => (
+          <article>
+            <h2>{articulo.title}</h2>
+          </article>
+        ))}
+      </section>
+    );
+  }
+}
+
 class Formulario extends Component {
   constructor(props) {
     super(props);
@@ -66,6 +92,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
+        <Blog />
         <Formulario />
         <Contador />
       </div>

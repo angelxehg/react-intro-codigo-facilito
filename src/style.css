@@ -1,3 +1,4 @@
-h1, p {
-  font-family: Lato;
+article {
+  border: 1px solid black;
+  margin-bottom: 5px;
 }
